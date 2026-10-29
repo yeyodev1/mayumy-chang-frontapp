@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import gsap from 'gsap'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 
 /**
- * El momento de "gracias": el heptágono se enciende baguette por baguette,
- * como una pieza que se termina de engastar. Debajo queda el contorno apagado
+ * El momento de "gracias": el diamante se llena de luz de abajo hacia arriba,
+ * como una piedra que recibe el sol. Debajo queda el contorno apagado
  * en plata para que el gesto se lea aunque la animación no corra.
  */
 withDefaults(defineProps<{ size?: string }>(), { size: '112px' })
@@ -16,22 +16,19 @@ onMounted(() => {
   if (!root.value) return
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ctx = gsap.context(() => {
-    const stones = '.thanks__lit .hepta__stone'
-    const prongs = '.thanks__lit .hepta__prong'
     if (reduce) {
-      gsap.set([stones, prongs, '.thanks__halo'], { opacity: 1 })
+      gsap.set('.thanks__halo', { opacity: 1 })
       return
     }
     gsap
       .timeline({ delay: 0.25 })
       .from('.thanks__mark', { scale: 0.9, rotate: -8, duration: 1.6, ease: 'expo.out', transformOrigin: '50% 50%' }, 0)
       .fromTo(
-        stones,
-        { opacity: 0, scale: 0.6, transformOrigin: '50% 50%' },
-        { opacity: 1, scale: 1, duration: 0.7, ease: 'expo.out', stagger: 0.11 },
-        0.1,
+        '.thanks__lit',
+        { clipPath: 'inset(100% 0% 0% 0%)' },
+        { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power3.inOut' },
+        0.15,
       )
-      .fromTo(prongs, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.11 }, 0.25)
       .fromTo('.thanks__halo', { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out' }, 0.9)
   }, root.value)
 })
@@ -43,8 +40,8 @@ onBeforeUnmount(() => ctx?.revert())
   <div ref="root" class="thanks" :style="{ width: size, height: size }" aria-hidden="true">
     <span class="thanks__halo"></span>
     <div class="thanks__mark">
-      <HeptagonMark class="thanks__base" :size="size" :stroke="1.2" />
-      <HeptagonMark class="thanks__lit" :size="size" :stroke="1.6" />
+      <BrandMark class="thanks__base" :size="size" />
+      <BrandMark class="thanks__lit" :size="size" />
     </div>
   </div>
 </template>

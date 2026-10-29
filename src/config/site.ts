@@ -7,10 +7,10 @@ import type { Segment, Stone } from '@/types'
  * Galápagos) llega del panel por /store/config.
  */
 export const site = {
-  name: 'Mayumy Chang',
-  shortName: 'Mayumy Chang',
+  name: 'Luminous Jewelers',
+  shortName: 'Luminous',
   tagline: 'Alta joyería de autor',
-  description: 'Joyería de autor diseñada en Guayaquil por Mayumy Chang.',
+  description: 'Luminous Jewelers: joyería de autor diseñada en Guayaquil por Mayumy Chang.',
   city: 'Guayaquil',
   email: '',
   // Solo dígitos con código de país (respaldo si el panel no trae uno)
@@ -101,7 +101,7 @@ export const site = {
         'Su firma es la geometría limpia: siete baguettes que forman un heptágono, una corona que esconde corazones por detrás. Detalles que se descubren de cerca.',
       ],
       signature: 'Mayumy Chang',
-      role: 'Diseñadora y fundadora',
+      role: 'Diseñadora y fundadora de Luminous',
     },
     service: [
       { icon: 'fa-truck-fast', title: 'Envío con Servientrega', text: '{local} en {city} · {national} al resto del país' },
@@ -296,7 +296,7 @@ export const site = {
   },
 
   legal: {
-    copyright: 'Mayumy Chang. Todos los derechos reservados.',
+    copyright: 'Luminous Jewelers. Todos los derechos reservados.',
     credit: {
       made: 'Hecho con',
       by: 'por',

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import OrderPlaced from '@/components/checkout/OrderPlaced.vue'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 import { checkoutCopy } from '@/components/checkout/checkoutCopy'
 import { usePaymentResponse } from '@/composables/usePaymentResponse'
 import { useStoreConfig } from '@/composables/useStoreConfig'
@@ -20,7 +20,7 @@ const helpUrl = computed(() => whatsappLink(fill(t.helpMsg, { code: order.value?
     <Transition name="rise" mode="out-in">
       <!-- Mientras confirma: la forma de lo que viene, sin ruedas girando. -->
       <div v-if="state === 'confirming'" key="wait" class="presp__wait">
-        <HeptagonMark class="presp__mark" size="72px" :stroke="1.2" />
+        <BrandMark class="presp__mark" size="72px" />
         <h1 class="presp__title">{{ t.confirming }}</h1>
         <p class="presp__text">{{ t.confirmingText }}</p>
         <div class="presp__sk" aria-hidden="true">

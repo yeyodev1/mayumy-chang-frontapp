@@ -178,7 +178,7 @@ const helpUrl = computed(() => whatsappLink(fill(more.helpMsg, { code: props.ord
     padding: 0.4rem 0;
   }
 
-  // Todo lo que no es el heptágono entra después de que se enciende.
+  // Todo lo que no es el diamante entra después de que se enciende.
   &__in {
     animation: placed-in 0.9s $ease both;
     animation-delay: calc(0.55s + var(--d, 0) * 0.09s);

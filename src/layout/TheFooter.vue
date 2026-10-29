@@ -3,7 +3,8 @@ import { computed } from 'vue'
 import { site, whatsappLink } from '@/config/site'
 import { useStoreConfig } from '@/composables/useStoreConfig'
 import FooterCredit from '@/layout/FooterCredit.vue'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
+import BrandLogo from '@/components/brand/BrandLogo.vue'
 
 const { config, shippingCopy } = useStoreConfig()
 const year = new Date().getFullYear()
@@ -19,7 +20,7 @@ const instagram = computed(() => {
   <footer class="ftr">
     <div class="ftr__top">
       <div class="ftr__intro">
-        <HeptagonMark size="44px" :stroke="1.4" />
+        <BrandMark size="44px" class="ftr__mark" />
         <p class="ftr__lede">Joyería de autor diseñada en {{ site.city }}. Envíos a todo Ecuador con Servientrega: {{ shippingCopy.local }} en {{ shippingCopy.city }} y {{ shippingCopy.national }} al resto del país.</p>
         <RouterLink to="/a-medida" class="btn btn--ghost-light">{{ site.bespoke.book }}</RouterLink>
       </div>
@@ -50,7 +51,7 @@ const instagram = computed(() => {
       </div>
     </div>
 
-    <p class="ftr__word" aria-hidden="true">{{ site.name }}</p>
+    <BrandLogo class="ftr__word" variant="wordmark" />
 
     <div class="ftr__bottom">
       <span>© {{ year }} {{ site.legal.copyright }}</span>
@@ -107,13 +108,14 @@ const instagram = computed(() => {
   }
 
   // El nombre a todo el ancho, como firma al final de la página.
+  &__mark,
   &__word {
-    @include caps(clamp(6rem, 25vw, 26rem));
-    text-align: center;
+    color: $gold;
+  }
+
+  &__word {
+    width: 100%;
     margin-top: $space-xl;
-    color: $quartz;
-    white-space: nowrap;
-    line-height: 0.78;
   }
 
   &__bottom {

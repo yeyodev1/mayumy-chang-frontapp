@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 import { site } from '@/config/site'
 import { adminNav, isNavActive } from './adminNav'
 
@@ -12,7 +12,7 @@ const route = useRoute()
 <template>
   <aside class="sidebar" aria-label="Menú del panel">
     <RouterLink to="/admin" class="sidebar__brand">
-      <HeptagonMark size="34px" :stroke="2" class="sidebar__mark" />
+      <BrandMark size="34px" class="sidebar__mark" />
       <span class="sidebar__brand-text">
         <span class="sidebar__name-brand">{{ site.name }}</span>
         <span class="sidebar__tag">Panel</span>

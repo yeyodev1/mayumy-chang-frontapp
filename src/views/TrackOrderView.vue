@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 import CheckoutField from '@/components/checkout/CheckoutField.vue'
 import { trackingCopy as t } from '@/components/tracking/trackingCopy'
 import { useTrackLookup } from '@/composables/useTrackLookup'
@@ -16,7 +16,7 @@ const helpUrl = computed(() => whatsappLink(t.helpMsg, config.value.contact.what
 <template>
   <section class="trk">
     <div class="trk__intro">
-      <HeptagonMark class="trk__mark" size="56px" :stroke="1.2" />
+      <BrandMark class="trk__mark" size="56px" />
       <p class="trk__eyebrow">[ {{ copy.eyebrow }} ]</p>
       <h1 class="trk__title">{{ copy.hand }}</h1>
       <p class="trk__text">{{ t.text }}</p>

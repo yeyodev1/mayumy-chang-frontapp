@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandLogo from '@/components/brand/BrandLogo.vue'
 import { site } from '@/config/site'
 
 defineProps<{ eyebrow: string; title: string; text: string }>()
@@ -8,9 +8,8 @@ defineProps<{ eyebrow: string; title: string; text: string }>()
 <template>
   <section class="ashell">
     <div class="ashell__brand">
-      <HeptagonMark size="clamp(72px, 14vw, 132px)" :stroke="0.8" class="ashell__mark" />
       <p class="ashell__eyebrow">[ {{ eyebrow }} ]</p>
-      <h1 class="ashell__name">{{ site.name }}</h1>
+      <h1 class="ashell__name"><BrandLogo :label="site.name" /></h1>
       <p class="ashell__tagline">{{ site.tagline }}</p>
     </div>
     <div class="ashell__panel">
@@ -49,19 +48,15 @@ defineProps<{ eyebrow: string; title: string; text: string }>()
     }
   }
 
-  &__mark {
-    color: $silver;
-    margin-bottom: 1.2rem;
-  }
-
   &__eyebrow {
     @include eyebrow;
     color: $silver;
   }
 
   &__name {
-    @include display($display-lg);
-    color: $frost;
+    width: clamp(220px, 60vw, 380px);
+    margin-block: 0.6rem 0.4rem;
+    color: $gold;
   }
 
   &__tagline {

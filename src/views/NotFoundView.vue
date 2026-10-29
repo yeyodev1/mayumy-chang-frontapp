@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import gsap from 'gsap'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 import { site } from '@/config/site'
 
 const copy = site.notFound
@@ -26,7 +26,7 @@ onBeforeUnmount(() => ctx?.revert())
   <section ref="root" class="nf">
     <div class="nf__number" aria-hidden="true">
       <span class="nf__mask"><span class="nf__digit">4</span></span>
-      <span class="nf__mask nf__mask--mark"><HeptagonMark class="nf__mark" size="100%" :stroke="0.9" /></span>
+      <span class="nf__mask nf__mask--mark"><BrandMark class="nf__mark" size="100%" /></span>
       <span class="nf__mask"><span class="nf__digit">4</span></span>
     </div>
     <div class="nf__content">
@@ -72,7 +72,7 @@ onBeforeUnmount(() => ctx?.revert())
     display: inline-block;
   }
 
-  // El cero es el heptágono: siete baguettes en vez de un círculo.
+  // El cero es el diamante de Luminous, como la O del logo.
   &__mark {
     color: var(--stone);
   }

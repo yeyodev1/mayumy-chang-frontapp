@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 import { site } from '@/config/site'
 
 const emit = defineEmits<{ navigate: [] }>()
@@ -8,7 +8,7 @@ const copy = site.bag
 
 <template>
   <div class="bempty">
-    <HeptagonMark class="bempty__mark" size="64px" :stroke="1.2" />
+    <BrandMark class="bempty__mark" size="64px" />
     <h3 class="bempty__title">{{ copy.empty }}</h3>
     <p class="bempty__text">{{ copy.emptyText }}</p>
     <RouterLink :to="{ name: 'Shop' }" class="btn btn--primary" @click="emit('navigate')">{{ copy.emptyCta }}</RouterLink>

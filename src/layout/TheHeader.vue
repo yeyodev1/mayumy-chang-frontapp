@@ -6,6 +6,7 @@ import { useUserStore } from '@/stores/user'
 import TheMobileMenu from '@/layout/TheMobileMenu.vue'
 import HeaderAnnounce from '@/layout/HeaderAnnounce.vue'
 import HeaderBag from '@/layout/HeaderBag.vue'
+import BrandLogo from '@/components/brand/BrandLogo.vue'
 
 const props = defineProps<{ minimal?: boolean }>()
 const route = useRoute()
@@ -71,9 +72,8 @@ const leftNav = site.nav.slice(0, 4)
         </RouterLink>
       </nav>
 
-      <RouterLink to="/" class="hdr__brand" aria-label="Mayumy Chang, ir al inicio">
-        <span class="hdr__brand-name">{{ site.name }}</span>
-        <span class="hdr__brand-sub">{{ site.tagline }}</span>
+      <RouterLink to="/" class="hdr__brand" :aria-label="`${site.name}, ir al inicio`">
+        <BrandLogo class="hdr__logo" />
       </RouterLink>
 
       <div v-if="props.minimal" class="hdr__actions">
@@ -233,30 +233,13 @@ const leftNav = site.nav.slice(0, 4)
   }
 
   &__brand {
-    @include flex(column, center, center, 0.1rem);
-    text-align: center;
+    @include flex(column, center, center);
     flex-shrink: 0;
   }
 
-  &__brand-name {
-    font-family: $font-serif;
-    font-size: clamp(1.25rem, 1rem + 1vw, 1.7rem);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    line-height: 1;
-  }
-
-  &__brand-sub {
-    display: none;
-    font-family: $font-mono;
-    font-size: 0.56rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    opacity: 0.7;
-
-    @include from('md') {
-      display: block;
-    }
+  // El logo completo: JEWELERS es una línea fina, por debajo de ~130px deja de leerse.
+  &__logo {
+    width: clamp(132px, 7.5rem + 4vw, 200px);
   }
 
 }

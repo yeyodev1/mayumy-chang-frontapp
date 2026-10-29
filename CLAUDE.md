@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Qué es esto
 
-Frontend de Mayumy Chang · Alta Joyería. Vue 3 + Vite + TypeScript, SCSS propio, Pinia, vue-router,
+Frontend de Luminous Jewelers, la alta joyería de Mayumy Chang. Vue 3 + Vite + TypeScript, SCSS propio, Pinia, vue-router,
 GSAP + ScrollTrigger y Lenis (scroll suave, `src/composables/useSmoothScroll.ts`).
 Desplegado en Vercel. El backend vive en el repo hermano `*-backapp` (Express 5 + Mongoose).
 

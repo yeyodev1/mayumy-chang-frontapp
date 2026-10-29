@@ -34,7 +34,7 @@ defineProps<{ shipping: StoreSettingsForm['shipping']; errors: Record<string, st
       </p>
       <div v-if="shipping.pickupEnabled" class="ship__row">
         <AdminField id="s-pname" label="Nombre" :error="errors.pickupName">
-          <input id="s-pname" v-model="shipping.pickup.name" type="text" placeholder="Taller Mayumy Chang" />
+          <input id="s-pname" v-model="shipping.pickup.name" type="text" placeholder="Taller Luminous Jewelers" />
         </AdminField>
         <AdminField id="s-paddress" label="Dirección" :error="errors.pickupAddress">
           <input id="s-paddress" v-model="shipping.pickup.address" type="text" />

@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 import { site } from '@/config/site'
 import { prefersReducedMotion } from '@/composables/useReveal'
+import BrandLogo from '@/components/brand/BrandLogo.vue'
 
 const root = ref<HTMLElement | null>(null)
 const panels = [
@@ -10,7 +11,6 @@ const panels = [
   { video: 'citrino', color: '#d99f0a' },
   { video: 'esmeralda', color: '#0a7350' },
 ]
-const letters = site.name.toUpperCase().split('')
 
 let ctx: gsap.Context | null = null
 
@@ -23,7 +23,7 @@ onMounted(() => {
 
   ctx = gsap.context(() => {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
-    tl.from('.hero__char', { yPercent: 105, duration: 1.4, stagger: 0.035 })
+    tl.from('.hero__logo', { yPercent: 105, duration: 1.5 })
       .from('.hero__panel', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.5, ease: 'expo.inOut', stagger: 0.12 }, 0.15)
       .from('.hero__panel video', { scale: 1.25, duration: 2.2, stagger: 0.12 }, 0.15)
       .from('[data-hero-fade]', { y: 24, opacity: 0, duration: 1, stagger: 0.08 }, 0.9)
@@ -49,10 +49,8 @@ onBeforeUnmount(() => ctx?.revert())
 
 <template>
   <section ref="root" class="hero" aria-labelledby="hero-title">
-    <h1 id="hero-title" class="hero__word" :aria-label="site.name">
-      <span v-for="(ch, i) in letters" :key="i" class="hero__mask" aria-hidden="true">
-        <span class="hero__char">{{ ch === ' ' ? ' ' : ch }}</span>
-      </span>
+    <h1 id="hero-title" class="hero__word">
+      <BrandLogo class="hero__logo" variant="wordmark" :label="site.name" />
     </h1>
 
     <div class="hero__stage">
@@ -96,12 +94,10 @@ onBeforeUnmount(() => ctx?.revert())
     padding-inline: 2rem;
   }
 
+  // El nombre es el logo real a todo lo ancho; el h1 recorta para que entre desde abajo.
   &__word {
-    @include caps(clamp(6.4rem, 27vw, 30rem));
-    @include flex(row, flex-end, space-between);
+    overflow: hidden;
     color: $basalt;
-    white-space: nowrap;
-    line-height: 0.74;
     margin-bottom: 1.2rem;
 
     // En pantallas anchas los paneles se montan sobre el nombre, como en una revista.
@@ -112,16 +108,8 @@ onBeforeUnmount(() => ctx?.revert())
     z-index: 0;
   }
 
-  &__mask {
-    display: inline-block;
-    overflow: hidden;
-    // Con line-height tan corto la máscara cortaría la curva de la U: se le da aire abajo.
-    padding: 0.06em 0 0.12em;
-    margin-bottom: -0.12em;
-  }
-
-  &__char {
-    display: inline-block;
+  &__logo {
+    width: 100%;
   }
 
   // Móvil: carrusel con snap. Desktop: tres columnas, la del medio más baja.

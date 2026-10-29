@@ -16,7 +16,7 @@ const config = ref<StoreConfig>({
     nationalCents: 700,
     freeFromCents: 0,
     pickupEnabled: true,
-    pickup: { name: 'Taller Mayumy Chang', address: 'Guayaquil (con cita previa)', city: 'Guayaquil', hours: 'Lun a Sáb · con cita' },
+    pickup: { name: 'Taller Luminous Jewelers', address: 'Guayaquil (con cita previa)', city: 'Guayaquil', hours: 'Lun a Sáb · con cita' },
   },
   payments: defaultPayments(),
   bankAccounts: [],

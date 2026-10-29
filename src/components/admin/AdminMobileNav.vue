@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import HeptagonMark from '@/components/brand/HeptagonMark.vue'
+import BrandMark from '@/components/brand/BrandMark.vue'
 import { site } from '@/config/site'
 import { adminNav, isNavActive } from './adminNav'
 import AdminMoreSheet from './AdminMoreSheet.vue'
@@ -24,7 +24,7 @@ function logout() {
 <template>
   <header class="topbar">
     <RouterLink to="/admin" class="topbar__brand" aria-label="Ir al panel">
-      <HeptagonMark size="26px" :stroke="2.4" class="topbar__mark" />
+      <BrandMark size="26px" class="topbar__mark" />
       <span class="topbar__name">{{ site.name }}</span>
     </RouterLink>
     <a href="/" target="_blank" rel="noopener" class="topbar__icon" aria-label="Ver tienda" title="Ver tienda">
