@@ -1,0 +1,83 @@
+// Paleta de Mayumy Chang · Alta Joyería.
+// Sale de su propio material: el cuarzo blanco sobre el que fotografía las piezas,
+// la plata 925, el basalto de Galápagos y las cinco piedras de la colección.
+// Semántica primero: los componentes hablan de tinta, papel y acento.
+@use 'sass:color';
+
+// ─── Minerales (base) ───────────────────────────────────────────────
+$quartz: #eef0ec; // fondo: el blanco frío y verdoso de sus fotos sobre cuarzo
+$quartz-deep: #e1e5e0; // bloques suaves y skeletons
+$frost: #f8f9f7; // superficies (tarjetas, drawer)
+$basalt: #0f1312; // tinta y bloques oscuros (lava de Galápagos)
+$basalt-soft: #1b211f;
+$silver: #a9afb2; // plata 925
+$ocean: #0d4f57; // Pacífico de Galápagos
+
+// ─── Las cinco luces (acentos por piedra) ───────────────────────────
+$zafiro: #1d2a8c;
+$esmeralda: #0a7350;
+$cristal: #b9c9d1;
+$granate: #9c2b19;
+$citrino: #d99f0a;
+
+$stones: (
+  'zafiro': $zafiro,
+  'esmeralda': $esmeralda,
+  'cristal': $cristal,
+  'granate': $granate,
+  'citrino': $citrino,
+);
+
+// Acento de marca (el de la pieza del mes: zafiro)
+$accent: $zafiro;
+$accent-deep: color.adjust($zafiro, $lightness: -8%);
+$accent-soft: color.mix($zafiro, #ffffff, 10%);
+$accent-warm: $basalt; // CTA de compra: negro basalto, la joya pone el color
+
+// Superficies
+$paper: $quartz;
+$surface: $frost;
+$sand: $quartz-deep;
+$line: #d3d9d3;
+
+// Texto
+$ink: $basalt;
+$ink-soft: #4a524f;
+$ink-muted: #7d8582;
+
+$overlay: rgba($basalt, 0.55);
+
+// Estados
+$success: $esmeralda;
+$warning: $citrino;
+$info: $zafiro;
+$danger: #b4321f;
+$success-bg: rgba($success, 0.12);
+$warning-bg: rgba($warning, 0.16);
+$info-bg: rgba($info, 0.1);
+$danger-bg: rgba($danger, 0.1);
+
+// Alias heredados del scaffold (el panel admin los usa): apuntan a la paleta nueva.
+$cocoa: $basalt;
+$rust: color.adjust($granate, $lightness: -6%);
+$navy: $zafiro;
+$lilac: $silver;
+$peach: $quartz-deep;
+$tangerine: $granate;
+$leaf: $esmeralda;
+$mustard: $citrino;
+$mint: color.mix($esmeralda, #ffffff, 14%);
+$periwinkle: color.mix($zafiro, #ffffff, 55%);
+$amber: $citrino;
+$mist: $cristal;
+$primary: $accent;
+$primary-dark: $ink;
+$primary-light: $paper;
+$white: $surface;
+$text-light: $surface;
+$text-secondary: $ink-soft;
+
+// Sombras frías y largas, como luz sobre metal
+$shadow-sm: 0 1px 2px rgba($basalt, 0.05), 0 4px 14px rgba($basalt, 0.05);
+$shadow-md: 0 2px 6px rgba($basalt, 0.06), 0 22px 48px rgba($basalt, 0.1);
+$shadow-lg: 0 40px 90px rgba($basalt, 0.22);
