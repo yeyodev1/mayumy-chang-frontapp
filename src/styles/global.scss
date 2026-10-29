@@ -1,0 +1,336 @@
+@use 'sass:color';
+// index.scss llega inyectado por Vite (additionalData) — no repetir @use aquí.
+// Este archivo se importa UNA sola vez desde main.ts: acá va todo lo que emite CSS.
+// Las fuentes llegan por <link> de Google Fonts en index.html.
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #{$paper};
+  --surface: #{$surface};
+  --text: #{$ink};
+  --text-soft: #{$ink-soft};
+  --border: #{$line};
+  // La piedra del capítulo en pantalla: la home la cambia al hacer scroll.
+  --stone: #{$zafiro};
+  --header-h: 64px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+// Lenis maneja el scroll suave; estas reglas son las que pide su documentación.
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: $font-principal;
+  font-size: $text-base;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-serif;
+  font-weight: 400;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  font-size: 1rem; // 16px: evita el zoom automático de iOS al enfocar
+  color: $ink;
+  background: $surface;
+  border: 1px solid $line;
+  border-radius: $radius-sm;
+  padding: 0.8rem 0.95rem;
+  width: 100%;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &:focus {
+    border-color: $ink;
+    box-shadow: 0 0 0 3px rgba($ink, 0.08);
+  }
+}
+
+label {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $ink-soft;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+:focus-visible {
+  outline: 2px solid $ink;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--stone);
+  color: $frost;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 1.8rem;
+  min-height: 48px;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 0.4s $ease,
+    background-color 0.4s $ease,
+    border-color 0.4s $ease,
+    transform 0.4s $ease;
+
+  // Barrido de luz al pasar el cursor: un reflejo, como sobre la plata.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, rgba(#fff, 0.28) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.8s $ease;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      transform: translateX(120%);
+    }
+  }
+
+  &--primary,
+  &--dark,
+  &--warm {
+    background: $basalt;
+    color: $frost;
+
+    &:hover {
+      background: $basalt-soft;
+    }
+  }
+
+  &--stone {
+    background: var(--stone);
+    color: $frost;
+  }
+
+  &--light {
+    background: $frost;
+    color: $basalt;
+  }
+
+  &--ghost {
+    border: 1px solid currentColor;
+    color: $ink;
+
+    &:hover {
+      background: $ink;
+      border-color: $ink;
+      color: $frost;
+    }
+  }
+
+  &--ghost-light {
+    border: 1px solid rgba($frost, 0.6);
+    color: $frost;
+
+    &:hover {
+      background: $frost;
+      color: $basalt;
+    }
+  }
+
+  &--cocoa {
+    background: $basalt;
+    color: $frost;
+  }
+
+  &--danger {
+    background: $danger;
+    color: $frost;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+// Enlace subrayado que se dibuja de izquierda a derecha
+.link-line {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.5s $ease;
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+// Skeleton: un brillo que cruza la superficie, nunca un spinner.
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: $quartz-deep;
+  border-radius: $radius-sm;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba($frost, 0.75), transparent);
+    animation: skeleton-shine 1.4s $ease infinite;
+  }
+}
+
+@keyframes skeleton-shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// Transiciones globales de Vue
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.rise-enter-active,
+.rise-leave-active {
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s $ease;
+}
+.rise-enter-from,
+.rise-leave-to {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+// Cambio de página: la vista nueva sube apenas mientras la cortina se retira.
+.page-enter-active {
+  transition:
+    opacity 0.6s $ease 0.15s,
+    transform 0.9s $ease 0.15s;
+}
+.page-leave-active {
+  transition: opacity 0.3s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.page-leave-to {
+  opacity: 0;
+}
+
+@include reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Palabras partidas por splitWords(): la máscara recorta la palabra mientras sube.
+.sw {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  // Aire arriba para tildes y la Ñ de las mayúsculas (Six Caps es muy alta).
+  padding: 0.16em 0 0.08em;
+  margin: -0.16em 0 -0.08em;
+}
+.sw__in {
+  display: inline-block;
+  will-change: transform;
+}
