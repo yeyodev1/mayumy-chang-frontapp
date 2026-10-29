@@ -3,6 +3,7 @@ import { nextTick, watch } from 'vue'
 import HomeHero from '@/components/home/HomeHero.vue'
 import HomeSegments from '@/components/home/HomeSegments.vue'
 import HomeMonth from '@/components/home/HomeMonth.vue'
+import HomeLookbook from '@/components/home/HomeLookbook.vue'
 import HomeBestSellers from '@/components/home/HomeBestSellers.vue'
 import HomeGalapagos from '@/components/home/HomeGalapagos.vue'
 import HomeStones from '@/components/home/HomeStones.vue'
@@ -27,6 +28,7 @@ watch(loading, (now) => {
     <HomeHero />
     <HomeSegments />
     <HomeMonth />
+    <HomeLookbook />
     <HomeBestSellers />
     <HomeGalapagos />
     <HomeStones />
