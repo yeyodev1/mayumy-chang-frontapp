@@ -40,5 +40,8 @@ export function lockScroll(locked: boolean) {
 }
 
 export function refreshScroll() {
+  // Los pines se crean en desorden (algunos esperan al catálogo): se recalculan
+  // en el orden en que aparecen en la página para que no se desfasen.
+  ScrollTrigger.sort()
   ScrollTrigger.refresh()
 }
