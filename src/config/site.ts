@@ -64,6 +64,10 @@ export const site = {
       cta: 'Añadir a la bolsa',
       view: 'Ver la pieza',
     },
+    lookbook: {
+      phrase: 'Pieza única · Hecha a mano · Guayaquil ·',
+      sub: 'Siete baguettes, una sola luz ·',
+    },
     bestSellers: {
       eyebrow: 'Lo más vendido',
       title: 'Las que se van primero',
