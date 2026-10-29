@@ -1,0 +1,17 @@
+// Solo variables. Las fuentes se cargan con <link> de Google Fonts en index.html.
+// Este archivo se inyecta en cada SFC vía vite.config.ts.
+
+// Six Caps: letras altas y angostas como una piedra en talla baguette. Solo en tamaños
+// enormes (nombres de piedras, de piezas, Galápagos); nunca en texto de lectura.
+$font-display: 'Six Caps', 'Oswald', Impact, sans-serif;
+// Instrument Serif: nombres de piezas, frases cortas en itálica, precios grandes.
+$font-serif: 'Instrument Serif', 'Times New Roman', serif;
+// Hanken Grotesk: lectura e interfaz.
+$font-principal: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+// IBM Plex Mono: fichas técnicas, etiquetas entre corchetes, códigos de pedido.
+$font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+$font-heading: $font-principal;
+$font-hand: $font-serif;
+$font-secondary: $font-heading;
+$font-body: $font-principal;
